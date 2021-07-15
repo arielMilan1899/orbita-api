@@ -1,0 +1,17 @@
+[
+  {
+    "model": "accounts.user",
+    "pk": 1,
+    "fields": {
+      "password": "pbkdf2_sha256$150000$EYuzcCk3wJwl$KmZ+Iq/pGa1TB5Z4RDaD1onxWKmoExSo9h9v7o8aDL0=",
+      "last_login": "2019-02-18T17:26:12Z",
+      "is_superuser": true,
+      "email": "admin@orbita.com",
+      "fullname": "Superadmin",
+      "is_staff": true,
+      "is_active": true,
+      "joined": "2018-11-12T20:05:14.320Z",
+      "jwt_valid_after": "2018-11-12T20:05:14.320Z"
+    }
+  }
+]

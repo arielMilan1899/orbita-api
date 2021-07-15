@@ -1,0 +1,46 @@
+version: '2'
+services:
+  api:
+    image: api
+    container_name: orbita-api
+    build:
+      context: ./
+      dockerfile: ./dev/dockerfiles/build
+    command: ["tail", "-f", "/dev/null"]
+    environment:
+      - DJANGO_DEBUG=True
+      - DB_NAME=orbita
+      - DB_USER=root
+      - DB_PASSWORD=123123
+      - DB_HOST=db
+      - DB_PORT=3306
+    ports:
+      - '8000:8000'
+      - '8080:8080'
+    links:
+      - db
+      - redis
+    volumes:
+      - .:/opt/project
+
+  db:
+    image: mysql:5.7
+    container_name: orbita-mysql
+    environment:
+     - MYSQL_ROOT_PASSWORD=123123
+     - MYSQL_DATABASE=orbita
+     - MYSQL_USER=orbita
+     - MYSQL_PASSWORD=123123
+    volumes:
+      - ./dev/data/mysql:/var/lib/mysql
+    ports:
+      - '3306:3306'
+
+  redis:
+    image: redis
+    command: ["redis-server", "--appendonly", "yes"]
+    container_name: orbita-redis
+    ports:
+      - '6379:6379'
+    volumes:
+      - ./dev/data/redis:/data

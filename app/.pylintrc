@@ -1,0 +1,28 @@
+[MASTER]
+
+init-hook='import sys;
+
+msg-template={path}:{line}: [{msg_id}({symbol}), {obj}] {msg} http://pylint-messages.wikidot.com/messages:{msg_id}
+
+max-line-length=120
+
+disable= W0613, E1101, W0232, W0235, R0801, R0902, E1136, R0914, W0511, C0103
+
+ignore-patterns=__init__,=*snap_test*,.*_dev.*
+
+min-public-methods=0
+
+max-public-methods=40
+
+max-args=10
+
+load-plugins=pylint_django
+
+max-module-lines=4000
+
+[DESIGN]
+max-parents=15
+
+# Regular expression matching correct method names. Overrides method-naming-
+# style
+method-rgx=(([a-z_][a-z0-9_]{2,})|(_[a-z0-9_]*)|(__[a-z][a-z0-9_]+__))$
